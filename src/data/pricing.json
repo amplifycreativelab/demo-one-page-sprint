@@ -1,0 +1,53 @@
+[
+  {
+    "id": "starter",
+    "name": "Starter",
+    "tagline": "Perfect to launch",
+    "price": "$997",
+    "inclusions": [
+      "One-page landing site",
+      "Mobile-responsive design",
+      "Contact form setup",
+      "Basic SEO optimization",
+      "Google Analytics setup",
+      "5 revisions included"
+    ],
+    "turnaround": "5-7 business days",
+    "popular": false
+  },
+  {
+    "id": "standard",
+    "name": "Standard",
+    "tagline": "Best value",
+    "price": "$1,497",
+    "inclusions": [
+      "Everything in Starter",
+      "Professional copywriting",
+      "SEO setup",
+      "Search Console setup",
+      "Social media integration",
+      "Priority support",
+      "Unlimited revisions"
+    ],
+    "turnaround": "5-7 business days",
+    "popular": true
+  },
+  {
+    "id": "premium",
+    "name": "Premium",
+    "tagline": "Best for growth",
+    "price": "$2,497",
+    "inclusions": [
+      "Everything in Standard",
+      "Custom branding elements",
+      "Advanced SEO package",
+      "Performance optimization",
+      "Hosting setup (1 year)",
+      "Domain registration",
+      "Monthly maintenance (3 months)",
+      "Analytics dashboard setup"
+    ],
+    "turnaround": "7-10 business days",
+    "popular": false
+  }
+]

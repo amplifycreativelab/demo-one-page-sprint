@@ -1,0 +1,409 @@
+---
+import { Image } from "astro:assets";
+import heroImage from "../assets/hero-image.png";
+
+const rating = 4.9;
+const jobsCompleted = "120+";
+---
+
+<section class="hero section--mesh">
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__main">
+        <div class="hero__badge animate-fade-up animate-delay-1">
+          <span class="badge badge--accent">Launch This Week</span>
+        </div>
+        
+        <h1 class="hero__title animate-fade-up animate-delay-2">
+          <span class="hero__title-line">Simple website.</span>
+          <span class="hero__title-line hero__title-gradient">Clear offer.</span>
+          <span class="hero__title-line">More enquiries.</span>
+        </h1>
+        
+        <p class="hero__subtitle animate-fade-up animate-delay-3">
+          A clean one-page site that gets you leads — live this week. Perfect
+          for tradies, consultants, and local businesses who want results
+          without the hassle.
+        </p>
+        
+        <div class="hero__ctas animate-fade-up animate-delay-4">
+          <a href="#contact" class="btn btn--primary btn--large btn-magnetic">
+            Get a free quote
+          </a>
+          <a href="#pricing" class="btn btn--secondary btn--large btn-magnetic">
+            View pricing
+          </a>
+        </div>
+        
+        <div class="hero__microcopy animate-fade-up animate-delay-5">
+          <div class="hero__microcopy-item">
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+            </svg>
+            Reply within 1 business day
+          </div>
+          <div class="hero__microcopy-item">
+            <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+            </svg>
+            No lock-in, no jargon
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__visual">
+        <div class="hero__image-wrapper animate-scale-in animate-delay-3" data-tilt>
+          <Image
+            src={heroImage}
+            alt="Modern website layout"
+            class="hero__image"
+            width={800}
+            format="webp"
+          />
+          <div class="hero__image-glow"></div>
+        </div>
+        
+        <div class="card card--highlight hero__proof-card animate-scale-in animate-delay-4" data-tilt>
+          <div class="hero__proof-rating">
+            <div class="rating">
+              {
+                [...Array(5)].map(() => (
+                  <svg
+                    class="rating__star"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))
+              }
+            </div>
+            <span class="hero__proof-rating-text">{rating} average rating</span>
+          </div>
+          <div class="hero__proof-stat">
+            <span class="hero__proof-stat-value" data-count={parseInt(jobsCompleted)}>{jobsCompleted}</span>
+            <span class="hero__proof-stat-label">jobs completed</span>
+          </div>
+          <ul class="hero__proof-list">
+            <li class="hero__proof-item">
+              <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+              </svg>
+              Fast turnaround
+            </li>
+            <li class="hero__proof-item">
+              <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M17 2H7c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 18a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7-4H7V4h10v12z"
+                ></path>
+              </svg>
+              Mobile-first
+            </li>
+            <li class="hero__proof-item">
+              <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"
+                ></path>
+              </svg>
+              SEO-ready
+            </li>
+          </ul>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="hero__orb hero__orb--1" data-parallax="0.05"></div>
+        <div class="hero__orb hero__orb--2" data-parallax="0.08"></div>
+        <div class="hero__orb hero__orb--3" data-parallax="0.03"></div>
+        <div class="hero__grid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding-top: var(--space-20);
+    padding-bottom: var(--space-20);
+    position: relative;
+    overflow: hidden;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+    align-items: center;
+  }
+
+  @media (min-width: 1024px) {
+    .hero__content {
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: var(--space-16);
+    }
+  }
+
+  .hero__main {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .hero__badge {
+    align-self: flex-start;
+    margin-bottom: var(--space-2);
+  }
+
+  .hero__title {
+    font-size: var(--text-h1);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .hero__title-line {
+    display: block;
+  }
+
+  .hero__title-gradient {
+    background: var(--gradient-text);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradient-shift 4s ease infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
+  }
+
+  .hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    max-width: 55ch;
+  }
+
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+
+  .hero__microcopy {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+  }
+
+  .hero__microcopy-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .hero__microcopy-item .icon {
+    color: var(--color-secondary);
+  }
+
+  .hero__visual {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-6);
+  }
+
+  .hero__image-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+    transition: transform 0.6s var(--ease-out-quart);
+  }
+
+  .hero__image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .hero__image-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient-hero);
+    opacity: 0.2;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+
+  .hero__proof-card {
+    width: 100%;
+    max-width: 400px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: var(--shadow-xl);
+    padding: var(--space-6);
+  }
+
+  .hero__proof-rating {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__proof-rating-text {
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .hero__proof-stat {
+    text-align: center;
+    margin-bottom: var(--space-6);
+    padding: var(--space-4);
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+  }
+
+  .hero__proof-stat-value {
+    display: block;
+    font-size: 3rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+    margin-bottom: var(--space-1);
+  }
+
+  .hero__proof-stat-label {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .hero__proof-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+
+  .hero__proof-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-small);
+    color: var(--color-text-primary);
+    font-weight: 500;
+  }
+
+  .hero__proof-item .icon {
+    color: var(--color-primary);
+  }
+
+  /* Decorative Orbs */
+  .hero__orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(60px);
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .hero__orb--1 {
+    width: 300px;
+    height: 300px;
+    background: rgba(99, 102, 241, 0.3);
+    top: 10%;
+    right: 5%;
+  }
+
+  .hero__orb--2 {
+    width: 200px;
+    height: 200px;
+    background: rgba(236, 72, 153, 0.2);
+    bottom: 20%;
+    left: 10%;
+  }
+
+  .hero__orb--3 {
+    width: 150px;
+    height: 150px;
+    background: rgba(132, 204, 22, 0.2);
+    top: 50%;
+    right: 20%;
+  }
+
+  /* Grid Pattern */
+  .hero__grid {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: -2;
+    opacity: 0.5;
+  }
+
+  @media (max-width: 1023px) {
+    .hero {
+      padding-top: var(--space-12);
+      padding-bottom: var(--space-12);
+      min-height: auto;
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .hero__subtitle {
+      font-size: 1rem;
+    }
+
+    .hero__ctas {
+      flex-direction: column;
+    }
+
+    .hero__ctas .btn {
+      width: 100%;
+    }
+
+    .hero__microcopy {
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .hero__visual {
+      margin-top: var(--space-8);
+    }
+
+    .hero__orb {
+      display: none;
+    }
+  }
+</style>

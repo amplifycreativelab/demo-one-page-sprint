@@ -1,0 +1,75 @@
+﻿---
+import DemoBranding from "../components/DemoBranding.astro";
+
+const mainSiteUrl = "https://amplifycreativelab.com";
+---
+
+<DemoBranding />
+
+<slot />
+
+<div class="demo-footer-branding" role="note" aria-label="Concept demo footer attribution">
+  <div class="demo-footer-branding__inner">
+    <div class="demo-footer-branding__title">Concept demo built by Amplify Creative Lab</div>
+    <a
+      class="demo-footer-branding__link"
+      href={mainSiteUrl}
+      target="_blank"
+      rel="nofollow noopener noreferrer"
+    >
+      Visit amplifycreativelab.com
+    </a>
+  </div>
+</div>
+
+<style>
+  .demo-footer-branding {
+    width: 100%;
+    padding: var(--space-6) var(--space-4) calc(var(--space-6) + env(safe-area-inset-bottom));
+    border-top: 1px solid var(--color-border);
+    background: rgba(15, 15, 26, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .demo-footer-branding__inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    display: grid;
+    gap: var(--space-1);
+    text-align: center;
+  }
+
+  .demo-footer-branding__title {
+    font-size: var(--text-xs);
+    letter-spacing: 0.02em;
+    color: var(--color-text-muted);
+    opacity: 0.9;
+  }
+
+  .demo-footer-branding__link {
+    font-size: var(--text-xs);
+    text-decoration: none;
+    color: var(--color-primary);
+    opacity: 0.9;
+    transition: color var(--transition-fast), opacity var(--transition-fast);
+  }
+
+  .demo-footer-branding__link:hover {
+    opacity: 1;
+    color: var(--color-primary-light);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .demo-footer-branding {
+      border-top-color: rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  @media print {
+    .demo-footer-branding {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,335 @@
+---
+import testimonials from "../data/testimonials.json";
+
+interface Testimonial {
+  name: string;
+  suburb: string;
+  rating: number;
+  outcome: string;
+}
+
+const logoPlaceholders = [
+  "Business A",
+  "Business B",
+  "Business C",
+  "Business D",
+  "Business E",
+];
+
+import { Image } from "astro:assets";
+import sarahImg from "../assets/sarah-mitchell.png";
+import jamesImg from "../assets/james-chen.png";
+import emmaImg from "../assets/emma-thompson.png";
+
+const avatarMap: Record<string, ImageMetadata> = {
+  "Sarah Mitchell": sarahImg,
+  "James Chen": jamesImg,
+  "Emma Thompson": emmaImg,
+};
+---
+
+<section class="section">
+  <div class="container">
+    <!-- Logo Marquee -->
+    <div class="logo-marquee animate-fade-up">
+      <p class="logo-marquee__text">Trusted by growing businesses</p>
+      <div class="logo-marquee__track">
+        <div class="logo-marquee__logos">
+          {[...logoPlaceholders, ...logoPlaceholders].map((logo) => (
+            <div class="logo-marquee__logo">{logo}</div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonials">
+      <div class="section-header text-center">
+        <h2 class="section-header__title animate-fade-up">
+          <span class="text-gradient">What our clients say</span>
+        </h2>
+        <p class="section-header__subtitle animate-fade-up animate-delay-1">
+          Real results from portfolio concept projects
+        </p>
+      </div>
+
+      <div class="testimonials-scroll">
+        {
+          testimonials.map((testimonial: Testimonial, index) => (
+            <div 
+              class={`card testimonial-card glass animate-fade-up`}
+              style={`transition-delay: ${(index + 2) * 0.15}s`}
+            >
+              <div class="testimonial-card__rating">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <svg
+                    class="rating__star"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    style={`opacity: ${i < testimonial.rating ? 1 : 0.3}`}
+                  >
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+                  </svg>
+                ))}
+              </div>
+              <p class="testimonial-card__quote">"{testimonial.outcome}"</p>
+              <div class="testimonial-card__author">
+                <div class="testimonial-card__author-info">
+                  <div class="testimonial-card__avatar-wrapper">
+                    <Image
+                      src={avatarMap[testimonial.name]}
+                      alt={testimonial.name}
+                      class="testimonial-card__avatar"
+                      width={80}
+                      format="webp"
+                    />
+                    <div class="testimonial-card__avatar-glow"></div>
+                  </div>
+                  <div>
+                    <span class="testimonial-card__name">
+                      {testimonial.name}
+                    </span>
+                    <span class="testimonial-card__location">
+                      {testimonial.suburb}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats">
+      <div class="stats__item animate-fade-up animate-delay-1">
+        <span class="stats__value">Load time:</span>
+        <span class="stats__before" data-count="6.2">6.2s</span>
+        <span class="stats__arrow">→</span>
+        <span class="stats__after" data-count="1.1">1.1s</span>
+      </div>
+      <div class="stats__item animate-fade-up animate-delay-2">
+        <span class="stats__value">Enquiry rate:</span>
+        <span class="stats__arrow">+</span>
+        <span class="stats__after" data-count="38">38%</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-marquee {
+    text-align: center;
+    margin-bottom: var(--space-16);
+    overflow: hidden;
+  }
+
+  .logo-marquee__text {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-6);
+  }
+
+  .logo-marquee__track {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    width: 100%;
+  }
+
+  .logo-marquee__logos {
+    display: flex;
+    gap: var(--space-12);
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .logo-marquee__logo {
+    font-weight: 700;
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+  }
+
+  .logo-marquee__logo {
+    font-weight: 700;
+    color: var(--color-text-muted);
+    font-size: var(--text-small);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .testimonials {
+    margin-bottom: var(--space-16);
+  }
+
+  .section-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-header__title {
+    font-size: var(--text-h2);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+  }
+
+  .section-header__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .testimonials-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-6);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-4);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .testimonial-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    scroll-snap-align: start;
+  }
+
+  .testimonial-card__rating {
+    display: flex;
+    gap: var(--space-1);
+    margin-bottom: var(--space-4);
+  }
+
+  .testimonial-card__quote {
+    font-size: 1.0625rem;
+    font-style: italic;
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-5);
+    flex-grow: 1;
+  }
+
+  .testimonial-card__author {
+    padding-top: var(--space-4);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .testimonial-card__author-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .testimonial-card__avatar-wrapper {
+    position: relative;
+  }
+
+  .testimonial-card__avatar {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .testimonial-card__avatar-glow {
+    position: absolute;
+    top: -4px;
+    left: -4px;
+    width: calc(100% + 8px);
+    height: calc(100% + 8px);
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    opacity: 0.3;
+    filter: blur(8px);
+    z-index: -1;
+  }
+
+  .testimonial-card__name {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    line-height: 1.2;
+  }
+
+  .testimonial-card__location {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+  }
+
+  .stats {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-6);
+  }
+
+  .stats__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-5);
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: var(--text-small);
+    backdrop-filter: blur(10px);
+  }
+
+  .stats__value {
+    color: var(--color-text-secondary);
+  }
+
+  .stats__before {
+    color: var(--color-error);
+    text-decoration: line-through;
+    opacity: 0.7;
+  }
+
+  .stats__arrow {
+    color: var(--color-primary);
+  }
+
+  .stats__after {
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: var(--text-body);
+  }
+
+  @media (max-width: 639px) {
+    .section-header__title {
+      font-size: var(--text-h3);
+    }
+
+    .section-header__subtitle {
+      font-size: var(--text-body);
+    }
+
+    .logo-marquee__logos {
+      gap: var(--space-8);
+    }
+
+    .stats {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .testimonials-scroll {
+      grid-template-columns: 1fr;
+      scroll-snap-type: x mandatory;
+    }
+  }
+</style>

@@ -1,0 +1,81 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import PainSolution from '../components/PainSolution.astro';
+import Services from '../components/Services.astro';
+import SocialProof from '../components/SocialProof.astro';
+import Pricing from '../components/Pricing.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactForm from '../components/ContactForm.astro';
+import FooterNAP from '../components/FooterNAP.astro';
+import DemoLayout from "../layouts/DemoLayout.astro";
+
+const siteName = 'One Page Sprint';
+const description = 'Simple, fast one-page websites that convert visitors into leads. Built as a non-indexed concept demo.';
+const url = 'https://github.com/amplifycreativelab/one-page-sprint-demo';
+const ogImage = '/og-image.jpg';
+---
+
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex, nofollow" />
+
+    <!-- Primary Meta Tags -->
+    <title>{siteName} | Simple Websites That Convert</title>
+    <meta name="title" content={`${siteName} | Simple Websites That Convert`} />
+    <meta name="description" content={description} />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={url} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={url} />
+    <meta property="og:title" content={`${siteName} | Simple Websites That Convert`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_AU" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={url} />
+    <meta property="twitter:title" content={`${siteName} | Simple Websites That Convert`} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={ogImage} />
+
+    <!-- Non-indexed portfolio demo: intentionally no schema -->
+
+    <!-- Preconnect for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    
+    <!-- Google Fonts - Distinctive Font Stack -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap" media="print" onload="this.media='all'" />
+  </head>
+  <body>
+    <DemoLayout>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <Header />
+    <main id="main-content">
+      <Hero />
+      <PainSolution />
+      <Services />
+      <SocialProof />
+      <Pricing />
+      <FAQ />
+      <ContactForm />
+    </main>
+    <FooterNAP />
+    </DemoLayout>
+    
+    <script src="/src/scripts/animations.js"></script>
+  </body>
+</html>

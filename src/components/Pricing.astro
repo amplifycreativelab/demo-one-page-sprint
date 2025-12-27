@@ -1,0 +1,257 @@
+---
+import pricing from '../data/pricing.json';
+
+interface PricingTier {
+  id: string;
+  name: string;
+  tagline: string;
+  price: string;
+  inclusions: string[];
+  turnaround: string;
+  popular: boolean;
+}
+---
+
+<section class="section section--light">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-header__title animate-fade-up">
+        <span class="text-gradient">Simple, transparent pricing</span>
+      </h2>
+      <p class="section-header__subtitle animate-fade-up animate-delay-1">
+        Choose the package that fits your needs. No hidden fees, no surprises.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+      {pricing.map((tier: PricingTier, index) => (
+        <div 
+          class={`card pricing-card ${tier.popular ? 'pricing-card--popular' : ''} animate-fade-up`}
+          style={`transition-delay: ${(index + 2) * 0.15}s`}
+          data-tilt
+        >
+          {tier.popular && (
+            <div class="pricing-card__badge">
+              <span class="badge badge--popular">Most Popular</span>
+            </div>
+          )}
+          <div class="pricing-card__header">
+            <h3 class="pricing-card__name">{tier.name}</h3>
+            <p class="pricing-card__tagline">{tier.tagline}</p>
+            <div class={`pricing-card__price ${tier.popular ? 'pricing-card__price--gradient' : ''}`}>
+              {tier.price}
+            </div>
+          </div>
+          <ul class="pricing-card__features">
+            {tier.inclusions.map((feature: string, featureIndex) => (
+              <li 
+                class="pricing-card__feature animate-fade-up"
+                style={`transition-delay: ${(index + 2) * 0.15 + (featureIndex + 1) * 0.05}s`}
+              >
+                <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+                </svg>
+                {feature}
+              </li>
+            ))}
+          </ul>
+          <div class="pricing-card__turnaround">
+            <span class="pricing-card__turnaround-label">Turnaround time:</span>
+            <span class="pricing-card__turnaround-value">{tier.turnaround}</span>
+          </div>
+          <a
+            href="#contact"
+            class={`btn ${tier.popular ? 'btn--primary' : 'btn--secondary'} btn-magnetic`}
+            data-tier={tier.id}
+          >
+            Choose {tier.name}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <p class="pricing-note text-center text-muted text-small animate-fade-up">
+      Hosting and domain can be handled for you.
+    </p>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-header__title {
+    font-size: var(--text-h2);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+  }
+
+  .section-header__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Spotlight Grid Layout */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+    margin-bottom: var(--space-8);
+  }
+
+  @media (min-width: 768px) {
+    .pricing-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .pricing-card--popular {
+      grid-column: span 1;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .pricing-grid {
+      grid-template-columns: 0.8fr 1.2fr 0.8fr;
+    }
+  }
+
+  .pricing-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+  }
+
+  .pricing-card--popular {
+    border: 2px solid var(--color-primary);
+    box-shadow: var(--glow-primary);
+  }
+
+  .pricing-card__badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .pricing-card__header {
+    text-align: center;
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--space-6);
+  }
+
+  .pricing-card__name {
+    font-size: var(--text-h3);
+    font-weight: 700;
+    margin-bottom: var(--space-1);
+    color: var(--color-text-primary);
+  }
+
+  .pricing-card__tagline {
+    font-size: var(--text-small);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-4);
+  }
+
+  .pricing-card__price {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    line-height: 1;
+  }
+
+  .pricing-card__price--gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .pricing-card__features {
+    list-style: none;
+    flex-grow: 1;
+    margin-bottom: var(--space-6);
+  }
+
+  .pricing-card__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-2) 0;
+    font-size: var(--text-body);
+    color: var(--color-text-primary);
+  }
+
+  .pricing-card__feature .icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .pricing-card__turnaround {
+    text-align: center;
+    padding: var(--space-4);
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-5);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+  }
+
+  .pricing-card__turnaround-label {
+    display: block;
+    font-size: var(--text-xs-2);
+    color: var(--color-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-1);
+  }
+
+  .pricing-card__turnaround-value {
+    display: block;
+    font-size: var(--text-body);
+    font-weight: 700;
+    color: var(--color-primary);
+  }
+
+  .pricing-note {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  @media (max-width: 767px) {
+    .pricing-grid {
+      grid-template-columns: 1fr;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-header__title {
+      font-size: var(--text-h3);
+    }
+
+    .section-header__subtitle {
+      font-size: var(--text-body);
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('[data-tier]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const tier = (e.currentTarget as HTMLElement).dataset.tier;
+      const form = document.getElementById('contact-form') as HTMLFormElement;
+      const tierInput = document.getElementById('pricing-tier') as HTMLInputElement;
+      if (form && tierInput) {
+        tierInput.value = tier || '';
+        form.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>

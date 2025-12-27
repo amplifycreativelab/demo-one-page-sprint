@@ -1,0 +1,161 @@
+<section class="section section--light">
+  <div class="container">
+    <div class="pain-solution">
+      <div class="pain-solution__column">
+        <h2 class="pain-solution__title pain-solution__title--pain animate-slide-left">
+          If your website does any of these, you're losing leads:
+        </h2>
+        <ul class="pain-solution__list pain-solution__list--pain">
+          <li class="pain-solution__item animate-slide-left animate-delay-1">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v4m0 4h.01"></path>
+            </svg>
+            Too slow
+          </li>
+          <li class="pain-solution__item animate-slide-left animate-delay-2">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v4m0 4h.01"></path>
+            </svg>
+            Too hard to contact you
+          </li>
+          <li class="pain-solution__item animate-slide-left animate-delay-3">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v4m0 4h.01"></path>
+            </svg>
+            Not clear what you do
+          </li>
+          <li class="pain-solution__item animate-slide-left animate-delay-4">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 8v4m0 4h.01"></path>
+            </svg>
+            Doesn't look good on mobile
+          </li>
+        </ul>
+      </div>
+
+      <div class="pain-solution__column">
+        <h2 class="pain-solution__title pain-solution__title--solution animate-slide-right">
+          One Page Sprint fixes it with:
+        </h2>
+        <ul class="pain-solution__list pain-solution__list--solution">
+          <li class="pain-solution__item animate-slide-right animate-delay-1">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+            </svg>
+            One clear offer
+          </li>
+          <li class="pain-solution__item animate-slide-right animate-delay-2">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+            </svg>
+            One clear CTA
+          </li>
+          <li class="pain-solution__item animate-slide-right animate-delay-3">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+            </svg>
+            Proof + pricing
+          </li>
+          <li class="pain-solution__item animate-slide-right animate-delay-4">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+            </svg>
+            Instant contact options
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pain-solution {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 768px) {
+    .pain-solution {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .pain-solution__title {
+    font-size: var(--text-h2);
+    font-weight: 700;
+    margin-bottom: var(--space-6);
+  }
+
+  .pain-solution__title--pain {
+    color: var(--color-warning);
+  }
+
+  .pain-solution__title--solution {
+    color: var(--color-primary);
+  }
+
+  .pain-solution__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .pain-solution__item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    padding: var(--space-3);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base) var(--ease-out-cubic);
+  }
+
+  .pain-solution__list--pain .pain-solution__item {
+    color: var(--color-text-primary);
+    background: rgba(245, 158, 11, 0.08);
+    border: 1px solid rgba(245, 158, 11, 0.15);
+  }
+
+  .pain-solution__list--pain .pain-solution__item:hover {
+    background: rgba(245, 158, 11, 0.15);
+    transform: translateX(5px);
+  }
+
+  .pain-solution__list--pain .icon {
+    color: var(--color-warning);
+    flex-shrink: 0;
+  }
+
+  .pain-solution__list--solution .pain-solution__item {
+    color: var(--color-text-primary);
+    background: rgba(99, 102, 241, 0.05);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+  }
+
+  .pain-solution__list--solution .pain-solution__item:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transform: translateX(-5px);
+  }
+
+  .pain-solution__list--solution .icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  @media (max-width: 639px) {
+    .pain-solution__title {
+      font-size: var(--text-h3);
+    }
+
+    .pain-solution__item {
+      font-size: var(--text-body);
+    }
+  }
+</style>

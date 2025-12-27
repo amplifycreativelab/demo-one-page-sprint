@@ -1,0 +1,171 @@
+---
+import faqs from '../data/faqs.json';
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+---
+
+<section class="section section--light">
+  <div class="container">
+    <div class="section-header text-center">
+      <h2 class="section-header__title animate-fade-up">
+        <span class="text-gradient">Frequently asked questions</span>
+      </h2>
+      <p class="section-header__subtitle animate-fade-up animate-delay-1">
+        Everything you need to know about our services
+      </p>
+    </div>
+
+    <div class="faq-list">
+      {faqs.map((faq: FAQ, index) => (
+        <details class="faq-item animate-fade-up" style={`transition-delay: ${(index + 2) * 0.1}s`}>
+          <summary class="faq-summary">
+            <span class="faq-summary__text">{faq.question}</span>
+            <span class="faq-summary__icon">
+              <svg class="icon icon--sm" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"></path>
+              </svg>
+            </span>
+          </summary>
+          <div class="faq-content">
+            <p>{faq.answer}</p>
+          </div>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .section-header {
+    margin-bottom: var(--space-12);
+  }
+
+  .section-header__title {
+    font-size: var(--text-h2);
+    font-weight: 700;
+    margin-bottom: var(--space-3);
+  }
+
+  .section-header__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .faq-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .faq-item {
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-3);
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+    transition: all var(--transition-base) var(--ease-out-cubic);
+  }
+
+  .faq-item:hover {
+    border-color: var(--color-border-hover);
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .faq-item[open] {
+    border-color: var(--color-primary);
+    background: rgba(99, 102, 241, 0.05);
+  }
+
+  .faq-summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: var(--space-4) var(--space-5);
+    font-family: var(--font-heading);
+    font-size: var(--text-body);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    transition: color var(--transition-fast);
+    list-style: none;
+  }
+
+  .faq-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-summary__text {
+    flex: 1;
+    padding-right: var(--space-3);
+  }
+
+  .faq-summary__icon {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-sm);
+    color: var(--color-primary);
+    transition: all var(--transition-base) var(--ease-out-cubic);
+  }
+
+  .faq-item[open] .faq-summary__icon {
+    background: var(--color-primary);
+    color: #FFFFFF;
+    transform: rotate(90deg);
+  }
+
+  .faq-content {
+    padding: 0 var(--space-5) var(--space-5);
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    animation: slideDown 0.3s var(--ease-out-cubic);
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .faq-content p {
+    margin-bottom: 0;
+  }
+
+  @media (max-width: 639px) {
+    .section-header__title {
+      font-size: var(--text-h3);
+    }
+
+    .section-header__subtitle {
+      font-size: var(--text-body);
+    }
+
+    .faq-summary {
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-small);
+    }
+
+    .faq-content {
+      padding: 0 var(--space-4) var(--space-4);
+    }
+  }
+</style>

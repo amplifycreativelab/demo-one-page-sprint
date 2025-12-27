@@ -1,0 +1,38 @@
+[
+  {
+    "icon": "layout",
+    "title": "One-page landing",
+    "description": "Clean, focused single-page site that converts visitors into leads with a clear offer.",
+    "included": true
+  },
+  {
+    "icon": "phone",
+    "title": "Quote funnel",
+    "description": "Optimized enquiry flow with clear quote request forms and conversion-first layout.",
+    "included": true
+  },
+  {
+    "icon": "search",
+    "title": "Basic SEO setup",
+    "description": "SEO foundations with meta tags, sitemap, and clean information architecture.",
+    "included": true
+  },
+  {
+    "icon": "edit",
+    "title": "Copy polish",
+    "description": "Professional copywriting that speaks directly to your customers' needs.",
+    "included": true
+  },
+  {
+    "icon": "chart",
+    "title": "Analytics ready",
+    "description": "Google Analytics and Search Console setup to track performance and leads.",
+    "included": true
+  },
+  {
+    "icon": "server",
+    "title": "Fast hosting setup",
+    "description": "Lightning-fast hosting configuration for optimal page load speeds.",
+    "included": false
+  }
+]

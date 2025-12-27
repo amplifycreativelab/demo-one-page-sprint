@@ -1,0 +1,260 @@
+<section class="section section--mesh" id="contact">
+  <div class="container">
+    <div class="contact">
+      <div class="contact__content animate-fade-up">
+        <h2 class="contact__title">
+          <span class="text-gradient">Let's build your site</span>
+        </h2>
+        <p class="contact__subtitle">
+          Ready to get started? Fill out the form and I'll get back to you within 1 business day.
+        </p>
+        
+        <div class="contact__info">
+          <div class="contact-info-item">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"></path>
+            </svg>
+            <div>
+              <span class="contact-info-label">Email</span>
+              <a href="mailto:hello@onepagesprint.com" class="contact-info-value">hello@onepagesprint.com</a>
+            </div>
+          </div>
+          
+          <div class="contact-info-item">
+            <svg class="icon icon--md" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path>
+            </svg>
+            <div>
+              <span class="contact-info-label">Response time</span>
+              <span class="contact-info-value">Within 1 business day</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact__form-wrapper animate-fade-up animate-delay-1">
+        <form id="contact-form" class="contact-form" method="POST" action="/api/contact">
+          <input type="hidden" id="pricing-tier" name="pricing_tier" value="" />
+          
+          <div class="form-group">
+            <label for="name" class="form-label">Name</label>
+            <input 
+              type="text" 
+              id="name" 
+              name="name" 
+              class="form-input" 
+              placeholder="Your name" 
+              required
+              autocomplete="name"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input 
+              type="email" 
+              id="email" 
+              name="email" 
+              class="form-input" 
+              placeholder="you@example.com" 
+              required
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="business" class="form-label">Business name</label>
+            <input 
+              type="text" 
+              id="business" 
+              name="business" 
+              class="form-input" 
+              placeholder="Your business name"
+              autocomplete="organization"
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="message" class="form-label">Tell me about your project</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              class="form-textarea" 
+              placeholder="What do you need? What's your timeline?"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn--primary btn--large btn-magnetic" style="width: 100%;">
+            Send message
+          </button>
+          
+          <p class="contact-form__note text-muted text-small">
+            No spam, ever. Your information is safe with us.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .contact {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+
+  @media (min-width: 1024px) {
+    .contact {
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .contact__content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .contact__title {
+    font-size: var(--text-h2);
+    font-weight: 700;
+    margin-bottom: 0;
+  }
+
+  .contact__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+  }
+
+  .contact__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+  }
+
+  .contact-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: rgba(99, 102, 241, 0.05);
+    border: 1px solid rgba(99, 102, 241, 0.1);
+    border-radius: var(--radius-md);
+  }
+
+  .contact-info-item .icon {
+    color: var(--color-primary);
+    flex-shrink: 0;
+  }
+
+  .contact-info-label {
+    display: block;
+    font-size: var(--text-xs-2);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-1);
+  }
+
+  .contact-info-value {
+    display: block;
+    font-weight: 600;
+    color: var(--color-text-primary);
+  }
+
+  .contact-info-value a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  .contact-info-value a:hover {
+    color: var(--color-primary-light);
+  }
+
+  .contact__form-wrapper {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .form-group {
+    margin-bottom: var(--space-5);
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    font-size: var(--text-small);
+    margin-bottom: var(--space-2);
+    color: var(--color-text-primary);
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    font-family: var(--font-body);
+    font-size: var(--text-body);
+    line-height: var(--line-height-normal);
+    color: var(--color-text-primary);
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--color-border);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-base) var(--ease-out-cubic);
+  }
+
+  .form-input::placeholder,
+  .form-textarea::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  .form-input:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.1);
+  }
+
+  .form-textarea {
+    min-height: 140px;
+    resize: vertical;
+  }
+
+  .contact-form__note {
+    text-align: center;
+    margin-top: var(--space-4);
+  }
+
+  @media (max-width: 1023px) {
+    .contact__form-wrapper {
+      padding: var(--space-6);
+    }
+  }
+
+  @media (max-width: 639px) {
+    .contact__title {
+      font-size: var(--text-h3);
+    }
+
+    .contact__subtitle {
+      font-size: var(--text-body);
+    }
+
+    .contact-info-item {
+      padding: var(--space-3);
+    }
+
+    .contact__form-wrapper {
+      padding: var(--space-5);
+    }
+  }
+</style>
