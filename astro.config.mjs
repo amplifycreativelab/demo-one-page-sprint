@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://github.com/amplifycreativelab',
-  base: '/one-page-sprint-demo',
+  site: 'https://amplifycreativelab.github.io',
+  base: '/demo-one-page-sprint',
   output: 'static',
   compressHTML: true,
   build: {
