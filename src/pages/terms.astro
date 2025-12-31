@@ -1,0 +1,115 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import FooterNAP from "../components/FooterNAP.astro";
+import DemoLayout from "../layouts/DemoLayout.astro";
+
+const base = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+
+const siteName = "One Page Sprint";
+const description =
+  "Terms of service for the One Page Sprint concept demo (non-indexed).";
+---
+
+<!DOCTYPE html>
+<html lang="en-AU">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href={`${base}favicon.svg`} />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Terms of Service | {siteName}</title>
+    <meta name="description" content={description} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&family=Syne:wght@600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+  </head>
+  <body>
+    <DemoLayout>
+      <a href="#main-content" class="skip-link">Skip to main content</a>
+      <Header />
+
+      <main id="main-content" class="container legal">
+        <h1>Terms of Service</h1>
+        <p class="lead">
+          This is placeholder copy for a non-indexed concept demo. Replace with
+          your actual terms before publishing.
+        </p>
+
+        <h2>Concept demo</h2>
+        <p>
+          This website is a portfolio demonstration. No services are sold
+          through this demo.
+        </p>
+
+        <h2>Liability</h2>
+        <p>
+          Content is provided &quot;as-is&quot; for demonstration purposes. Use
+          at your own risk.
+        </p>
+
+        <h2>Contact</h2>
+        <p>
+          For questions, contact us using the details in the footer.
+        </p>
+
+        <p class="back">
+          <a href={base}>Back to home</a>
+        </p>
+      </main>
+
+      <FooterNAP />
+    </DemoLayout>
+  </body>
+</html>
+
+<style>
+  .legal {
+    padding-top: var(--space-10);
+    padding-bottom: var(--space-10);
+    max-width: 900px;
+  }
+
+  .legal h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    letter-spacing: var(--letter-spacing-tight);
+    margin-bottom: var(--space-4);
+  }
+
+  .lead {
+    color: var(--color-text-secondary);
+    line-height: var(--line-height-relaxed);
+    margin-bottom: var(--space-6);
+  }
+
+  .legal h2 {
+    margin-top: var(--space-8);
+    margin-bottom: var(--space-3);
+    font-size: 1.25rem;
+  }
+
+  .legal p {
+    line-height: var(--line-height-relaxed);
+    color: var(--color-text-secondary);
+  }
+
+  .back {
+    margin-top: var(--space-10);
+  }
+</style>
+
